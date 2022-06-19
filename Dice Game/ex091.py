@@ -21,4 +21,4 @@ for c in range(0, 4):
     print(f'In {count} place, we have:')
     for d in range(0, 2):
         print(f'{rank[c][d]}')
-"""
+""" 
