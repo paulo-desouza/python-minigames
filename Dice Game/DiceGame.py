@@ -47,6 +47,7 @@ while True:
     screen.fill('Pink')
     for id, dice in enumerate(dice_rects):
         screen.blit(dice_surfs[rand[id]], (dice_rects[id]))
+        pygame.time.delay(1000)
         
 
     pygame.display.update()
