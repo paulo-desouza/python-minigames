@@ -14,18 +14,18 @@ time_when_pressed = 0
 WIDTH = 610
 HEIGHT = 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Dice Game')
+pygame.display.set_caption('dice-game')
 
 clock = pygame.time.Clock()
 
 # Loading the images for the die.
 dice_imgs = [
-    pygame.image.load('Dice Game/Sprites/Dice-1.png').convert_alpha(),
-    pygame.image.load('Dice Game/Sprites/Dice-2.png').convert_alpha(),
-    pygame.image.load('Dice Game/Sprites/Dice-3.png').convert_alpha(),
-    pygame.image.load('Dice Game/Sprites/Dice-4.png').convert_alpha(),
-    pygame.image.load('Dice Game/Sprites/Dice-5.png').convert_alpha(),
-    pygame.image.load('Dice Game/Sprites/Dice-6.png').convert_alpha()
+    pygame.image.load('dice-game/Sprites/Dice-1.png').convert_alpha(),
+    pygame.image.load('dice-game/Sprites/Dice-2.png').convert_alpha(),
+    pygame.image.load('dice-game/Sprites/Dice-3.png').convert_alpha(),
+    pygame.image.load('dice-game/Sprites/Dice-4.png').convert_alpha(),
+    pygame.image.load('dice-game/Sprites/Dice-5.png').convert_alpha(),
+    pygame.image.load('dice-game/Sprites/Dice-6.png').convert_alpha()
 ]
 
 dice_size = (64, 64)
@@ -41,10 +41,10 @@ dice_surfs = [
 
 # Creating the "Play" Button and Results Display
 button_img = pygame.image.load(
-    'Dice Game/Sprites/unnpressed.png').convert_alpha()
+    'dice-game/Sprites/unnpressed.png').convert_alpha()
 start_img = pygame.transform.scale(button_img, (130, 85))
 
-button_font = pygame.font.Font('Dice Game/font/Pixeltype.ttf', 50)
+button_font = pygame.font.Font('dice-game/font/Pixeltype.ttf', 50)
 
 class Button():
     def __init__(self, x, y, image):

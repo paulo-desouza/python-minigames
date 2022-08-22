@@ -17,7 +17,7 @@ ground_surf = pygame.image.load('platformer/graphics/ground.png').convert()
 text_color = (64, 64, 64)
 box_color = '#c0e8ec'
 
-score_surf = test_font.render('My Game', False, text_color)
+score_surf = test_font.render('You lose', False, text_color)
 score_rect = score_surf.get_rect(center = (400, 50))
 
 snail_surf = pygame.image.load('platformer/graphics/snail/snail1.png').convert_alpha()
@@ -26,8 +26,7 @@ snail_rect = snail_surf.get_rect(midbottom = (600, 300))
 player_surf = pygame.image.load('platformer/graphics/Player/player_walk_1.png').convert_alpha()
 player_rect = player_surf.get_rect(midbottom = (80, 300))
 player_gravity = 0
-
-
+velocity = 0
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -44,6 +43,24 @@ while True:
                 if event.key == pygame.K_SPACE:
                     if player_rect.bottom == 300:
                         player_gravity = -20
+            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    velocity = 5
+            
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    velocity = 0
+            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    velocity = -5
+            
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT:
+                    velocity = 0
+                    
+                    
         else:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
@@ -53,8 +70,7 @@ while True:
     if game_active:
         screen.blit(sky_surf, (0, 0))
         screen.blit(ground_surf, (0, 300))
-        pygame.draw.rect(screen, box_color, score_rect)
-        screen.blit(score_surf, (score_rect))
+        
 
         if snail_rect.x > -100:
             snail_rect.left -= 4
@@ -64,6 +80,7 @@ while True:
 
         # Player
         player_gravity += 1
+        player_rect.x += velocity
         player_rect.y += player_gravity
         if player_rect.bottom >= 300:
             player_rect.bottom = 300
@@ -74,6 +91,7 @@ while True:
             game_active = False
     else:
         screen.fill('Yellow')
+        screen.blit(score_surf, (score_rect))
 
     pygame.display.update()
     clock.tick(60)
